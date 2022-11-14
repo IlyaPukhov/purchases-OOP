@@ -40,7 +40,7 @@ public class PurchasesRunner {
         int limit = 5;
         System.out.println("\nПоиск покупок (до " + limit + ") с ценой в промежутке [" + priceFrom + ", " + priceTo + "] ...");
         try {
-            dataProcessor.printPurchasesInPriceRange(priceFrom, priceTo, 5);
+            dataProcessor.printPurchasesInPriceRange(priceFrom, priceTo, limit);
         } catch (InputDataException e) {
             System.out.println(e.getMessage());
         }
