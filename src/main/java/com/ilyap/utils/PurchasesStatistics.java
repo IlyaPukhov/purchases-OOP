@@ -77,4 +77,3 @@ public class PurchasesStatistics {
         System.out.printf("Сумма количества: %.2f\n", getSumAmount());
     }
 }
-

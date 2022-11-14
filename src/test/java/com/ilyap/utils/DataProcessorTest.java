@@ -42,6 +42,12 @@ class DataProcessorTest {
         assertIterableEquals(anotherPurchases, dataProcessor.getPurchasesInPriceRange(10, 25, 2));
     }
 
+    @DisplayName("Get purchases in zero-range")
+    @Test
+    void getPurchasesInZeroRange() {
+        assertTrue(dataProcessor.getPurchasesInPriceRange(10, 25, 0).isEmpty());
+    }
+
     @DisplayName("Get exception when getting purchases in range")
     @Test
     void getPurchasesInPriceRangeException() {

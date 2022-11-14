@@ -39,4 +39,3 @@ public class DataProcessor<T extends Purchase> {
                 .findFirst();
     }
 }
-
