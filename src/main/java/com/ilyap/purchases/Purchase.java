@@ -4,9 +4,10 @@ import com.ilyap.Printer;
 
 import java.util.Objects;
 
+import static com.ilyap.utils.UID.getNextId;
+
 public class Purchase implements Printer {
     private final int id;
-    private static int nextId;
     private double amount;
     private double price;
 
@@ -45,10 +46,6 @@ public class Purchase implements Printer {
 
     public int getId() {
         return id;
-    }
-
-    protected static int getNextId() {
-        return nextId++;
     }
 
     public double getAmount() {

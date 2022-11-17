@@ -2,6 +2,8 @@ package com.ilyap.purchases;
 
 import com.ilyap.Printer;
 
+import static com.ilyap.utils.UID.getNextId;
+
 public class PromotionalPurchase extends Purchase implements Printer {
     private final int id;
     private double amount;

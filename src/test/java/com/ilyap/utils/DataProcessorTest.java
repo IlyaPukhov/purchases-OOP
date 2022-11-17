@@ -8,7 +8,6 @@ import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
 import org.junit.jupiter.params.ParameterizedTest;
 import org.junit.jupiter.params.provider.ValueSource;
-import org.mockito.Mockito;
 
 import java.util.ArrayList;
 import java.util.Arrays;
@@ -19,16 +18,18 @@ import static org.junit.jupiter.api.Assertions.*;
 
 class DataProcessorTest {
 
-    private final List<Purchase> list = new ArrayList<>();
-    private final DataProcessor<Purchase> dataProcessor = new DataProcessor<>(list);
+    private List<Purchase> list;
+    private DataProcessor<Purchase> dataProcessor;
 
     @BeforeEach
     void setUp() {
+        UID.reset();
+
+        list = new ArrayList<>();
         for (int i = 0; i < 5; i++) {
-            list.add(Mockito.mock(Purchase.class));
-            Mockito.when(list.get(i).getId()).thenReturn(i);
-            Mockito.when(list.get(i).getPrice()).thenReturn(5.0 * (i + 1));
+            list.add(new Purchase(i, 5 * (i + 1)));
         }
+        dataProcessor = new DataProcessor<>(list);
     }
 
 

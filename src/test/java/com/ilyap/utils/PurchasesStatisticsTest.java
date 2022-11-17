@@ -1,10 +1,9 @@
 package com.ilyap.utils;
 
 import com.ilyap.purchases.Purchase;
-import org.junit.jupiter.api.BeforeAll;
+import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
-import org.mockito.Mock;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -13,18 +12,20 @@ import static org.junit.jupiter.api.Assertions.assertEquals;
 
 class PurchasesStatisticsTest {
 
-    @Mock
-    private static List<Purchase> emptyList = new ArrayList<>();
-
-    private static final List<Purchase> list = new ArrayList<>();
-    private final PurchasesStatistics purchasesStatistics = new PurchasesStatistics(list);
+    private final List<Purchase> emptyList = new ArrayList<>();
     private final PurchasesStatistics purchasesStatisticsEmpty = new PurchasesStatistics(emptyList);
 
-    @BeforeAll
-    static void setUp() {
+    private PurchasesStatistics purchasesStatistics;
+
+    @BeforeEach
+    void setUp() {
+        UID.reset();
+
+        List<Purchase> list = new ArrayList<>();
         for (int i = 0; i < 5; i++) {
             list.add(new Purchase(3.0 * (i + 1), 5.0 * (i + 1)));
         }
+        purchasesStatistics = new PurchasesStatistics(list);
     }
 
     @DisplayName("Get expensive product id")
