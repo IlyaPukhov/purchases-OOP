@@ -8,9 +8,6 @@ public class AnotherPurchase implements Printer {
     private final int id;
     private double price;
 
-    public AnotherPurchase() {
-        this.id = Purchase.getNextId();
-    }
 
     public AnotherPurchase(int id, double price) {
         this.id = id;
@@ -19,8 +16,8 @@ public class AnotherPurchase implements Printer {
 
 
     @Override
-    public void printInfo() {
-        System.out.printf("Товар %d: Цена: %.2f\n",
+    public String getInfo() {
+        return String.format("Товар %d: Цена: %.2f",
                 this.getId() + 1, this.getPrice());
     }
 

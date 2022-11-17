@@ -25,8 +25,8 @@ public class Purchase implements Printer {
     }
 
     @Override
-    public void printInfo() {
-        System.out.printf("Товар %d: Количество: %.2f, Цена: %.2f, Стоимость: %.2f\n",
+    public String getInfo() {
+        return String.format("Товар %d: Количество: %.2f, Цена: %.2f, Стоимость: %.2f",
                 this.getId() + 1, this.getAmount(), this.getPrice(), this.getSum());
     }
 

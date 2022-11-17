@@ -12,8 +12,8 @@ public class PromotionalPurchase extends Purchase implements Printer {
     }
 
     @Override
-    public void printInfo() {
-        System.out.printf("Товар %d: Количество: %.2f — акционный товар\n",
+    public String getInfo() {
+        return String.format("Товар %d: Количество: %.2f — акционный товар",
                 this.getId() + 1, this.getAmount());
     }
 

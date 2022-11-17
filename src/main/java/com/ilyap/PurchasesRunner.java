@@ -31,7 +31,8 @@ public class PurchasesRunner {
                 new PromotionalPurchase(12.7)
         ));
 
-        purchases.forEach(Purchase::printInfo);
+        purchases.forEach((purchase) -> System.out.println(purchase.getInfo()));
+        System.out.println();
 
         PurchasesStatistics purchasesStatistics = new PurchasesStatistics(purchases);
         purchasesStatistics.printStatistics();
@@ -43,7 +44,8 @@ public class PurchasesRunner {
         int limit = 5;
         System.out.println("\nПоиск покупок (до " + limit + ") с ценой в промежутке [" + priceFrom + ", " + priceTo + "] ...");
         try {
-            dataProcessor.getPurchasesInPriceRange(priceFrom, priceTo, limit).forEach(AnotherPurchase::printInfo);
+            dataProcessor.getPurchasesInPriceRange(priceFrom, priceTo, limit)
+                    .forEach((purchase) -> System.out.println(purchase.getInfo()));
         } catch (InputDataException e) {
             System.out.println(e.getMessage());
         }
@@ -53,7 +55,7 @@ public class PurchasesRunner {
         try {
             Optional<AnotherPurchase> optionalAnotherPurchase = dataProcessor.getPurchaseByPrice(price);
 
-            optionalAnotherPurchase.ifPresentOrElse(AnotherPurchase::printInfo,
+            optionalAnotherPurchase.ifPresentOrElse((anotherPurchase) -> System.out.println(anotherPurchase.getInfo()),
                     () -> System.out.println("Упс, ничего не нашлось :)")
             );
         } catch (InputDataException e) {
